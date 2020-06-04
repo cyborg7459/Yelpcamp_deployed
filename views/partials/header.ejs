@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>YelpCamp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-	   Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark py-4 mb-5" id="topnav">
+        <div class="container-fluid">
+            <a href="/home" class="navbar-brand">YelpCamp</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcollapse">
+                <span class="navbar-toggler-icon text-white"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcollapse">
+                <ul class="navbar-nav ml-auto">
+					<% if(!currentUser) { %>
+						<li class="nav-item">
+							<a href="/login" class="nav-link">Login</a>
+						</li>
+						<li class="nav-item">
+							<a href="/register" class="nav-link">Sign Up</a>
+						</li>
+					<% } else { %>
+						<li><a class="nav-link">Signed in as <strong><%= currentUser.username %></strong></a></li>
+						<li class="nav-item">
+							<a href="/logout" class="nav-link">Logout</a>
+						</li>
+					<% } %>
+                </ul>
+            </div>
+        </div>       
+    </nav>
+	
+	<div class="container">
+		<% if(error && error.length>0) { %>
+			<div class="alert alert-danger" role="alert">
+				<%= error %>
+			</div>
+		<% } %>
+		<% if(success && success.length>0) { %>
+			<div class="alert alert-success" role="alert">
+				<%= success %>
+			</div>
+		<% } %>
+	</div>
+
+	
+    

@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs') %>
+
+	<div class="container" id="main">
+        <div class="header">
+            <h1 class="display-2">Welcome to YelpCamp</h1>
+            <h1 class="display-4">The Ultimate collection of amazing campsites from all over the world</h1>        
+            <hr class="mb-5">
+        </div>
+        <div id="view" class="mb-5">
+            <div class="row d-flex justify-content-center align-items-center mx-0 abc">
+                <div class="col-lg-5 px-0 text-center img-container">
+                    <img src="https://previews.123rf.com/images/prettyvectors/prettyvectors1605/prettyvectors160500114/56625643-vector-flat-cartoon-camping-illustration.jpg" class="homeimg img-fluid mb-4 mb-lg-0">
+                </div>
+                <div class="col-lg-7 px-5 py-3 text-center text-lg-left">
+                    <div>
+                        <h1 class="heading">Explore Us</h1>
+                        <hr>
+                        <p class="lead">Explore our vast collection of campsites from all over the world, see their pictures, view their reviews and plan out what's the best for you</p>
+                    </div>
+                    <div class="mb-4 mb-lg-3">
+                        <a href="/campgrounds" class="btn btn-outline-success">View all campgrounds</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="add" class="mb-5">
+            <div class="row d-flex mx-0">
+                <div class="col-lg-5 p-0 text-center order-1 order-lg-2 img-container">
+                    <img src="https://content.fortune.com/wp-content/uploads/2019/04/brb05.19.plus_.jpg" class="homeimg img-fluid mb-4 mb-lg-0">
+                </div>
+                <div class="col-lg-7 px-5 py-2 align-self-center text-center text-lg-right order-2 order-lg-1">
+                    <div>
+                        <h1 class="heading">Share With Us</h1>
+                        <hr>
+                        <p class="lead">Have an amazing campsite to share with the world. Tell us now</p>
+                    </div>
+                    <div class="mb-4 mb-lg-3">
+                        <a href="/campgrounds/new" class="btn btn-outline-success">Add new campground</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer.ejs') %>

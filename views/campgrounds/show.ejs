@@ -1,0 +1,107 @@
+<%- include('../partials/header') %>
+<% var rating = 0; %>
+<% camp.comments.forEach(function(comment){ %>
+	<% rating+=  comment.stars %>
+<% }) %>
+<% rating = (rating/(camp.comments.length)).toFixed(2) %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xl-3 mb-5 order-2 order-md-1">
+                <h2 class="mb-3">Yelp Camp</h2>
+                <ul class="list-group">
+                    <li class="list-group-item active">Info 1</li>
+                    <li class="list-group-item">Info 2</li>
+                    <li class="list-group-item">Info 3</li>
+                    <li class="list-group-item">Info 4</li>
+                    <li class="list-group-item">Info 5</li>
+                  </ul>
+            </div>
+            <div class="col-md-8 col-xl-9 order-1 order-md-2">
+                <div class="card p-0 mb-4">
+                    <div class="card-header p-0">
+                        <img src="<%= camp.image %>" class="card-img-top img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h3>
+                            <span class="text-primary"><%= camp.name %></span>
+                            <p class="lead float-right" id="price"><strong>$<%= (camp.price).toFixed(2) %>/night</strong></p>
+                        </h3>
+						<p>
+							<em>Added by <%= camp.author.username %></em>
+						</p>
+						<p>
+							<strong>Views : </strong> <%= camp.views %>
+						</p>
+                        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error illum nulla deleniti explicabo cumque voluptates fugiat officia quam. Tenetur nobis asperiores aperiam? Blanditiis sapiente architecto soluta quibusdam aperiam accusamus atque voluptate. Est tenetur aut consectetur magnam voluptatem voluptates deleniti fugiat! A, quibusdam sint maiores praesentium veniam sed atque libero doloremque.</p>
+                        <p class="text-danger d-inline mb-0">
+							<% if(camp.comments.length==0){ %>
+								<% for(var i=0;i<5;i++){ %>
+									<i class="far fa-star"></i>
+								<% } %>
+								No stars
+							<% }else { %>
+                            	<i class="fas fa-star"></i>
+                            	<i class="fas fa-star"></i>
+                            	<i class="fas fa-star"></i>
+                            	<i class="fas fa-star"></i>
+                            	<i class="far fa-star"></i>
+                            	<%= rating %> stars
+							<% } %>
+                        </p>
+                        <p class="text-danger float-right mb-0" id="revnumber"><%= camp.comments.length %> reviews</p>
+                    </div>
+					<% if(currentUser && camp.author.id.equals(currentUser._id)) { %>
+						<div class="card-footer py-3 px-2">
+							<form class="form-inline d-inline" action="/campgrounds/<%= camp._id %>/?_method=DELETE" method="POST">
+								<button class="d-inline btn btn-danger mr-4">Delete Campground</button>
+							</form>
+							<a href="/campgrounds/<%= camp._id %>/update" class="d-inline btn btn-primary">Edit Campground</a>
+						</div>
+					<% } %>
+                </div>
+                <div class="card well mb-5">
+                    <div class="card-body">
+                        <div class="text-right">
+                            <a href="/campgrounds" class="btn btn-info mx-3">Go back</a>
+                            <a href="/campgrounds/<%= camp._id %>/comments/new" class="btn btn-success">Leave a review</a>
+                        </div>
+                        <hr>
+						<% if(camp.comments.length===0) { %>
+							<p class="lead">
+								<em>Be the first one to post a review</em>	
+							</p>
+						<% } else { %>
+							<% (camp.comments).forEach(function(comment){ %>
+							<div class="mb-3">
+								<p class="text-dark d-inline mt-5">
+									<% for(var i=0;i<Math.round(comment.stars); i++) {%>
+										<i class="fas fa-star"></i>
+									<% } %>
+									<% for(var i=0; i< (5-Math.round(comment.stars)); i++) { %>
+										<i class="far fa-star"></i>
+									<% } %>
+									<%= comment.author.username %>
+								</p>
+								<p class="float-right d-inline">10 days ago</p>
+								<p class="mb-0 p-0">
+                            		<%= comment.text %>
+									<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+										<form action="/campgrounds/<%=camp._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" class="mt-0 mr-2 float-left">
+											<button class="text-danger link-button submit">
+												<a class="submit">Delete</a>
+											</button>
+										</form>
+										<a href="/campgrounds/<%=camp._id %>/comments/<%=comment._id%>/edit" class="text-primary comment-option">Edit</a>
+									<% } %>
+								</p>
+							</div>
+							<% }) %>
+						<% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer') %>

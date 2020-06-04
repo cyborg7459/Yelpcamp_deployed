@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+
+	<div id="form">
+		<div class="container px-3 mb-5">
+			<h1 class="display-3"> Edit <%= found.name %> </h1>
+			<hr class="mb-4">
+			<form action="/campgrounds/<%= found._id %>?_method=PUT" method="POST">
+				<div class="form-group">
+					<input class="form-control form-control-lg" type="text" value="<%= found.name %>" name="camp[name]">
+				</div>
+				<div class="form-group">
+					<input class="form-control form-control-lg" type="text" value="<%= found.image %>" name="camp[image]">
+				</div>
+				<div class="form-group">
+					<input class="form-control form-control-lg" type="text" value="<%= found.location %>" name="camp[location]">
+				</div>
+				<div class="form-group">
+					<input class="form-control form-control-lg" type="text" value="<%= found.price %>" name="camp[price]">
+				</div>
+				<textarea name="camp[description]" class="form-control mb-4 lead" cols="30" rows="10">
+					<%= found.description %>
+				</textarea>
+				<button class="btn btn-lg btn-block btn-warning">
+					Save Changes
+				</button>
+			</form>
+    	</div>
+	</div>
+
+<%- include('../partials/footer') %>
+

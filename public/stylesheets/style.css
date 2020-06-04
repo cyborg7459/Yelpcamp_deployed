@@ -1,0 +1,94 @@
+#topnav
+{
+    font-size: 1.4rem;
+    font-weight: 100;
+}
+
+.navbar-brand
+{
+    font-size: 2.5rem;
+}
+
+.container-fluid
+{
+    max-width: 1700px;
+    width: 90%;
+}
+
+.container
+{
+    width: 90%;
+    max-width: 1500px;
+}
+
+#form .container
+{
+    width: 90%;
+    max-width: 800px;
+}
+
+
+.display-2
+{
+    font-size: 5rem;
+}
+
+.display-4
+{
+    font-size: 2rem;
+}
+
+.homeimg
+{
+    transition : 0.5s;
+}
+
+.homeimg:hover{
+    transform: scale(1.1);
+}
+
+.img-container
+{
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+#form
+{
+    margin-top: 100px;
+}
+
+#form .lead
+{
+    font-size: 1.5rem;
+}
+
+.well
+{
+    background-color: lavender;
+}
+
+.comment-option
+{
+	font-size : 12px;
+}
+
+.link-button
+{
+	font-size : 12px;
+    padding: 0;
+    background: none;
+    border :none;
+}
+
+@media(max-width : 900px)
+{
+    .display-2
+    {
+        font-size: 4rem;
+    }
+    .display-4
+    {
+        font-size: 1.6rem;   }
+}

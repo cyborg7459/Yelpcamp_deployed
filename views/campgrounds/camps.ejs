@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+    
+    <div class="container">
+        <div class="mb-5" id="header">
+            <h1 class="display-3">View our campgrounds</h1>
+            <p class="lead">Choose from a wide range of hand-picled campgrounds from all over the world. Ranging from the heart of the forests, to the 	foothills of vast mountains, we've got it all</p>
+            <a href="/campgrounds/new" class="btn btn-outline btn-outline-primary">Add new campground</a>
+            <hr class="mb-3">
+        </div>
+        <div id="main">
+            <div class="row">
+				<% camps.forEach(function(camp){ %>
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+                    	<div class="card p-0 mb-4">
+                        	<div class="card-header p-0">
+                            	<img src="<%= camp.image %> " class="card-img-top img-fluid">
+                        	</div>
+                        	<div class="card-body">
+                            	<h2><%= camp.name %></h2>
+                            	<p class="lead"><%= camp.location %></p>
+                            	<p class="mb-1"><%- camp.description %></p>
+                        	</div>
+                        	<div class="card-footer py-3">
+                            	<a href="/campgrounds/<%= camp._id %>" class="my-0 btn-lg btn btn-outline-success">Read More</a>
+                        	</div>
+                    	</div>
+                	</div>
+				<% }) %>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer.ejs') %>
