@@ -33,7 +33,7 @@ var middlewareObj = {
 	},
 	
 	checkCampgroundOwnership : function(req,res,next){
-	if(req.isAuthenticated()){
+		if(req.isAuthenticated()){
 			Campground.findById(req.params.id, function(err,foundCamp){
 				if(err){
 					res.redirect("back");

@@ -27,7 +27,7 @@ app.use(flash());
 mongoose.connect('mongodb+srv://cyborg:database@1234@cyborg7459-pn1p6.mongodb.net/<dbname>?retryWrites=true&w=majority',  {useNewUrlParser: true, useUnifiedTopology : true}).then(()=>{
 	console.log("Connected");
 }).catch(err => {
-	console.log("ERROR");
+	console.log(err);
 })
 
 mongoose.set('useFindAndModify', false);
