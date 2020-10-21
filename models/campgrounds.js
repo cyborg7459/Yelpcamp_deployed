@@ -8,12 +8,12 @@ var campgroundSchema = new mongoose.Schema({
 	views : Number,
 	location : String,
 	author : {
-			id : {
-				type : mongoose.Schema.Types.ObjectId,
-				ref : "User"
-			},
-			username : String
+		id : {
+			type : mongoose.Schema.Types.ObjectId,
+			ref : "User"
 		},
+		username : String
+	},
 	comments : [
 		{
 			type : mongoose.Schema.Types.ObjectId,
